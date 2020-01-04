@@ -1,0 +1,4 @@
+#pane{
+    background-image: url("@../res/station.png");
+    -fx-background-size: cover;
+}

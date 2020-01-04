@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="pane" prefHeight="700" prefWidth="1300" style="-fx-background-image: url('/res/station.png');" styleClass="my-pane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+
+      <ImageView fx:id="car" fitHeight="28.0" fitWidth="61.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/car5.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="addBtn" layoutX="1017.0" layoutY="58.0" mnemonicParsing="false" onAction="#add" prefHeight="53.0" prefWidth="130.0" text="ADD" />
+   </children>
+</Pane>
