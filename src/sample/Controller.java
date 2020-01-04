@@ -32,6 +32,7 @@ public class Controller implements Initializable {
     Polyline line1;
     @FXML
     public static ArrayList<ImageView> carsImg = new ArrayList<>();
+    public static ArrayList<A> waitingCars = new ArrayList<>();
     public static ArrayList<A> cars = new ArrayList<>();
     @FXML
     Button addBtn;

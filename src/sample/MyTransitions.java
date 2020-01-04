@@ -23,8 +23,6 @@ public MyTransitions(ImageView imageView){
        // tt.setFromY(image.getY());
         tt.setToX(getFuelPoint().getX()-image.getLayoutX());
         tt.setToY(getFuelPoint().getY()-image.getLayoutY());
-        System.out.println("image "+image.getX()+", "+image.getY());
-        System.out.println("fuel "+getFuelPoint().getX()+", "+getFuelPoint().getY());
         //   tt.setCycleCount(Animation.INDEFINITE);
         tt.play();
 
@@ -97,9 +95,10 @@ public MyTransitions(ImageView imageView){
         t.setToY(getFuelPoint().getY()-image.getLayoutY());
         t.play();
     }
-    public static void increse(ImageView image){
+    public static void increse(ImageView image, ArrayList<A> crs,int index){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
-        double x = -60;
+
+        double x = index * 60;
         TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
         // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
         //t.setToY(image2.getLayoutY()-image.getLayoutY());
