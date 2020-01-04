@@ -12,6 +12,7 @@
             <Image url="@../res/car5.png" />
          </image>
       </ImageView>
-      <Button fx:id="addBtn" layoutX="1017.0" layoutY="58.0" mnemonicParsing="false" onAction="#add" prefHeight="53.0" prefWidth="130.0" text="ADD" />
+      <Button fx:id="addA" layoutX="1007.0" layoutY="58.0" mnemonicParsing="false" onAction="#add" prefHeight="53.0" prefWidth="130.0" text="ADD A" />
+       <Button fx:id="addB" layoutX="1151.0" layoutY="58.0" mnemonicParsing="false" onAction="#add" prefHeight="53.0" prefWidth="130.0" text="ADD B" />
    </children>
 </Pane>

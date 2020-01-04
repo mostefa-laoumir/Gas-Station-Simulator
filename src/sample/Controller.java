@@ -33,10 +33,13 @@ public class Controller implements Initializable {
     @FXML
     public static ArrayList<ImageView> carsImg = new ArrayList<>();
     public static ArrayList<A> waitingCars = new ArrayList<>();
+    public static ArrayList<B> waitingCarsGaz = new ArrayList<>();
     public static ArrayList<AB> waitingCarsToPay = new ArrayList<>();
     public static ArrayList<A> cars = new ArrayList<>();
+    public static ArrayList<B> carsGaz = new ArrayList<>();
+
     @FXML
-    Button addBtn;
+    Button addA,addB;
 @FXML
 Pane pane;
 
@@ -51,13 +54,24 @@ Pane pane;
 
         return imageView;
     }
+    private ImageView createImageViewOfCarGaz(String nameOfImage) throws Exception {
+        Image image = new Image(getClass().getResource("/res/" + nameOfImage).toURI().toString());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(40);
+        imageView.setFitHeight(64);
+        imageView.setPreserveRatio(true);
+        imageView.setLayoutX(CoordinatesProvider.getInitialPointGaz().getX());
+        imageView.setLayoutY(CoordinatesProvider.getInitialPointGaz().getY());
+
+        return imageView;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
 
-            addBtn.setOnAction(event->{
+            addA.setOnAction(event->{
                 try {
                    ImageView image = createImageViewOfCar("car4.png");
                     carsImg.add(image);
@@ -69,7 +83,18 @@ Pane pane;
                 }
 
             });
+        addB.setOnAction(event->{
+            try {
+                ImageView image = createImageViewOfCarGaz("car2.png");
+                carsImg.add(image);
+                pane.getChildren().add(carsImg.get(carsImg.size()-1));
+                carsGaz.add(new B("a",image));
+                carsGaz.get(carsGaz.size()-1).start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
+        });
     /*MyTransitions.goToFuel(car);
     MyTransitions.goToPay(car);*/
    /* A a = new A("a", car);

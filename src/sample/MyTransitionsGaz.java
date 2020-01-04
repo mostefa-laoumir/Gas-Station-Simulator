@@ -10,15 +10,16 @@ import java.util.ArrayList;
 
 import static sample.CoordinatesProvider.*;
 
-public class MyTransitions{
+public class MyTransitionsGaz{
+
     public static void goToFuel(ImageView image){
         TranslateTransition tt = new TranslateTransition();
         tt.setNode(image);
         tt.setDuration(Duration.seconds(5));
-       // tt.setFromX(image.getX());
-       // tt.setFromY(image.getY());
-        tt.setToX(getFuelPoint().getX()-image.getLayoutX());
-        tt.setToY(getFuelPoint().getY()-image.getLayoutY());
+        // tt.setFromX(image.getX());
+        // tt.setFromY(image.getY());
+        tt.setToX(getGazPoint().getX()-image.getLayoutX());
+        tt.setToY(getGazPoint().getY()-image.getLayoutY());
         //   tt.setCycleCount(Animation.INDEFINITE);
         tt.play();
 
@@ -28,9 +29,9 @@ public class MyTransitions{
         t1.setNode(image);
         t1.setDuration(Duration.seconds(3));
         //t1.setFromX(getFuelPoint().getX());
-      //  t1.setFromY(getFuelPoint().getY());
+        //  t1.setFromY(getFuelPoint().getY());
         t1.setToX(89-image.getLayoutX());
-        t1.setToY(446-image.getLayoutY());
+        t1.setToY(308-image.getLayoutY());
         t1.play();
         t1.setOnFinished(event -> image.setRotate(image.getRotate()-90));
     }
@@ -50,8 +51,8 @@ public class MyTransitions{
         TranslateTransition t3 = new TranslateTransition();
         t3.setNode(image);
         t3.setDuration(Duration.seconds(3));
-      //  t3.setFromX(90);
-       // t3.setFromY(612);
+        //  t3.setFromX(90);
+        // t3.setFromY(612);
         t3.setToX(140-image.getLayoutX());
         t3.setToY(650-image.getLayoutY());
         t3.play();
@@ -62,8 +63,8 @@ public class MyTransitions{
         TranslateTransition t4 = new TranslateTransition();
         t4.setNode(image);
         t4.setDuration(Duration.seconds(4));
-      //  t4.setFromX(140);
-      //  t4.setFromY(675);
+        //  t4.setFromX(140);
+        //  t4.setFromY(675);
         t4.setToX(getPayPoint().getX()-image.getLayoutX());
         t4.setToY(getPayPoint().getY()-image.getLayoutY());
         t4.play();
@@ -72,23 +73,23 @@ public class MyTransitions{
         TranslateTransition t = new TranslateTransition();
         t.setNode(image);
         t.setDuration(Duration.seconds(2));
-      //  t.setFromX(getPayPoint().getX());
-       // t.setFromY(getPayPoint().getY());
+        //  t.setFromX(getPayPoint().getX());
+        // t.setFromY(getPayPoint().getY());
         t.setToX(getOutPoint().getX()-image.getLayoutX());
         t.setToY(getOutPoint().getY()-image.getLayoutY());
         t.play();
 
     }
 
-    public static void waitAfterCarFuel(ImageView image, ArrayList<A> crs){
-       // ImageView image2 = crs.get(crs.size()-2).imageView;
+    public static void waitAfterCarGaz(ImageView image, ArrayList<B> crs){
+        // ImageView image2 = crs.get(crs.size()-2).imageView;
         int n = crs.size()+1;
         double x = n * 60;
         TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
-       // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
+        // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
         //t.setToY(image2.getLayoutY()-image.getLayoutY());
-        t.setToX(getFuelPoint().getX()-image.getLayoutX()+x);
-        t.setToY(getFuelPoint().getY()-image.getLayoutY());
+        t.setToX(getGazPoint().getX()-image.getLayoutX()+x);
+        t.setToY(getGazPoint().getY()-image.getLayoutY());
         t.play();
     }
     public static void waitAfterCarPay(ImageView image, ArrayList<AB> crs){
@@ -109,8 +110,8 @@ public class MyTransitions{
         TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
         // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
         //t.setToY(image2.getLayoutY()-image.getLayoutY());
-        t.setToX(getFuelPoint().getX()-image.getLayoutX()+x);
-        t.setToY(getFuelPoint().getY()-image.getLayoutY());
+        t.setToX(getGazPoint().getX()-image.getLayoutX()+x);
+        t.setToY(getGazPoint().getY()-image.getLayoutY());
         t.play();
     }
     public static void increseToPay(ImageView image,int index){
@@ -124,7 +125,6 @@ public class MyTransitions{
         t.setToY(getPayPoint().getY()-image.getLayoutY());
         t.play();
     }
-
 
 
 

@@ -10,8 +10,10 @@ public final class CoordinatesProvider {
      * points in the scene with X and Y coordinate for several animations
      */
 
-    private static final Point2D INITIAL_POINT = new Point2D(1236, 470);
+    private static final Point2D INITIAL_POINT = new Point2D(1236, 440);
+    private static final Point2D INITIAL_POINT_GAZ = new Point2D(1236, 302);
     private static final Point2D FUEL_POINT = new Point2D(366, 440);
+    private static final Point2D GAZ_POINT = new Point2D(366, 302);
     private static final Point2D PAY_POINT = new Point2D(1011, 646);
     private static final Point2D OUT_POINT = new Point2D(1350, 646);
 
@@ -168,6 +170,14 @@ public final class CoordinatesProvider {
 
     public static Point2D getFuelPoint() {
         return FUEL_POINT;
+    }
+
+    public static Point2D getInitialPointGaz() {
+        return INITIAL_POINT_GAZ;
+    }
+
+    public static Point2D getGazPoint() {
+        return GAZ_POINT;
     }
 
     public static Point2D getOutPoint() {
