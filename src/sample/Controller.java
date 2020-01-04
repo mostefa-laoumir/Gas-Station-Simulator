@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,8 +30,8 @@ public class Controller implements Initializable {
     @FXML
     ImageView bg, car;
     @FXML
-    Polyline line1;
-    @FXML
+    Label total;
+    public static double totalIncome = 0;
     public static ArrayList<ImageView> carsImg = new ArrayList<>();
     public static ArrayList<A> waitingCars = new ArrayList<>();
     public static ArrayList<B> waitingCarsGaz = new ArrayList<>();
@@ -69,14 +70,14 @@ Pane pane;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        total.setText("madafaka");
 
             addA.setOnAction(event->{
                 try {
                    ImageView image = createImageViewOfCar("car4.png");
                     carsImg.add(image);
                     pane.getChildren().add(carsImg.get(carsImg.size()-1));
-                    cars.add(new A("a",image));
+                    cars.add(new A("a",image,total));
                     cars.get(cars.size()-1).start();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -88,7 +89,7 @@ Pane pane;
                 ImageView image = createImageViewOfCarGaz("car2.png");
                 carsImg.add(image);
                 pane.getChildren().add(carsImg.get(carsImg.size()-1));
-                carsGaz.add(new B("a",image));
+                carsGaz.add(new B("a",image,total));
                 carsGaz.get(carsGaz.size()-1).start();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -96,8 +97,8 @@ Pane pane;
 
         });
     /*MyTransitions.goToFuel(car);
-    MyTransitions.goToPay(car);*/
-   /* A a = new A("a", car);
+        MyTransitions.goToPay(car);*/
+       /* A a = new A("a", car);
     a.start();*/
 
 

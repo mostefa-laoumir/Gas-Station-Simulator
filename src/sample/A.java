@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.Platform;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import sample.Main.*;
 
@@ -8,11 +10,13 @@ import java.util.ArrayList;
 public class A extends Thread {
 String name ="";
 ImageView imageView;
+Label label;
 
 
-    public A(String name, ImageView imageView) {
+    public A(String name, ImageView imageView, Label label) {
         this.name=name;
         this.imageView = imageView;
+        this.label = label;
 
     }
 
@@ -48,6 +52,14 @@ ImageView imageView;
             Main.pay.acquire();
             MyTransitions.goToPay(imageView);
             Thread.sleep(15000);
+            Controller.totalIncome += 29.99;
+            Platform.runLater(new Runnable(){
+                @Override
+                public void run() {
+                    label.setText(String.format("Total : %.2f$", Controller.totalIncome));
+                }
+
+            });
             MyTransitions.goToEnd(imageView);
             Main.pay.release();
             if(!Controller.waitingCarsToPay.isEmpty()) {
