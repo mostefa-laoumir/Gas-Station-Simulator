@@ -91,7 +91,7 @@ public class MyTransitions{
         t.setToY(getFuelPoint().getY()-image.getLayoutY());
         t.play();
     }
-    public static void waitAfterCarPay(ImageView image, ArrayList<AB> crs){
+    public  static void waitAfterCarPay(ImageView image, ArrayList<ImageView> crs){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
         int n = crs.size()+1;
         double x = -n * 60;
@@ -113,7 +113,7 @@ public class MyTransitions{
         t.setToY(getFuelPoint().getY()-image.getLayoutY());
         t.play();
     }
-    public static void increseToPay(ImageView image,int index){
+    public synchronized static void increseToPay(ImageView image,int index){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
 
         double x = -index * 60;

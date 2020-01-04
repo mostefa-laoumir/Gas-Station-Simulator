@@ -25,6 +25,9 @@ public class B extends Thread {
                 MyTransitionsGaz.goToFuel(imageView);
                 Thread.sleep(10000);
                 MyTransitionsGaz.goToWaitPoint(imageView);
+                Thread.sleep(1000);
+                Main.waitingPoint.acquire();
+                //MyTransitions.goToWaitPoint(imageView);
                 Main.g.release();
                 if(!Controller.waitingCarsGaz.isEmpty()) {
                     Controller.waitingCarsGaz.remove(0);
@@ -34,11 +37,12 @@ public class B extends Thread {
                 Thread.sleep(3000);
                 MyTransitionsGaz.goThroughOneWay1(imageView);
                 Thread.sleep(3000);
+                Main.waitingPoint.release();
                 MyTransitionsGaz.goThroughOneWay2(imageView);
                 Thread.sleep(3000);
                 if(Main.pay.availablePermits()==0) {
-                    MyTransitionsGaz.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
-                    Controller.waitingCarsToPay.add(new AB(null,this));
+                    MyTransitions.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
+                    Controller.waitingCarsToPay.add(imageView);
                 }
                 Main.pay.acquire();
                 MyTransitionsGaz.goToPay(imageView);
@@ -48,7 +52,7 @@ public class B extends Thread {
                 if(!Controller.waitingCarsToPay.isEmpty()) {
                     Controller.waitingCarsToPay.remove(0);
                     for (int i = 0; i < Controller.waitingCarsToPay.size(); i++)
-                        MyTransitionsGaz.increseToPay(Controller.waitingCarsToPay.get(i).b.imageView,i+1);
+                        MyTransitions.increseToPay(Controller.waitingCarsToPay.get(i),i+1);
                 }
 
             } catch (Exception e) {

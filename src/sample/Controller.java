@@ -34,7 +34,7 @@ public class Controller implements Initializable {
     public static ArrayList<ImageView> carsImg = new ArrayList<>();
     public static ArrayList<A> waitingCars = new ArrayList<>();
     public static ArrayList<B> waitingCarsGaz = new ArrayList<>();
-    public static ArrayList<AB> waitingCarsToPay = new ArrayList<>();
+    public static ArrayList<ImageView> waitingCarsToPay = new ArrayList<>();
     public static ArrayList<A> cars = new ArrayList<>();
     public static ArrayList<B> carsGaz = new ArrayList<>();
 

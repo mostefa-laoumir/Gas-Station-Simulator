@@ -14,8 +14,9 @@ import java.util.concurrent.Semaphore;
 public class Main extends Application {
 
     public static final Semaphore s = new Semaphore(1);
-    public static Semaphore g = new Semaphore(1);
-    public static Semaphore pay = new Semaphore(1);
+    public static final Semaphore g = new Semaphore(1);
+    public static final Semaphore pay = new Semaphore(1);
+    public static final Semaphore waitingPoint = new Semaphore(1);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
