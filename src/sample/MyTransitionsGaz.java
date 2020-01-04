@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.animation.Animation;
-import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -81,7 +79,7 @@ public class MyTransitionsGaz{
 
     }
 
-    public static void waitAfterCarGaz(ImageView image, ArrayList<B> crs){
+    public static void waitAfterCarGaz(ImageView image, ArrayList<VoitureGPL> crs){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
         int n = crs.size()+1;
         double x = n * 60;
@@ -92,18 +90,8 @@ public class MyTransitionsGaz{
         t.setToY(getGazPoint().getY()-image.getLayoutY());
         t.play();
     }
-    public static void waitAfterCarPay(ImageView image, ArrayList<AB> crs){
-        // ImageView image2 = crs.get(crs.size()-2).imageView;
-        int n = crs.size()+1;
-        double x = -n * 60;
-        TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
-        // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
-        //t.setToY(image2.getLayoutY()-image.getLayoutY());
-        t.setToX(getPayPoint().getX()-image.getLayoutX()+x);//1350, 646
-        t.setToY(getPayPoint().getY()-image.getLayoutY());
-        t.play();
-    }
-    public static void increse(ImageView image, ArrayList<A> crs,int index){
+
+    public static void increse(ImageView image, ArrayList<VoitureEssance> crs, int index){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
 
         double x = index * 60;

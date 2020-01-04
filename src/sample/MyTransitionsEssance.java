@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.animation.Animation;
-import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -10,7 +8,7 @@ import java.util.ArrayList;
 
 import static sample.CoordinatesProvider.*;
 
-public class MyTransitions{
+public class MyTransitionsEssance {
     public static void goToFuel(ImageView image){
         TranslateTransition tt = new TranslateTransition();
         tt.setNode(image);
@@ -80,7 +78,7 @@ public class MyTransitions{
 
     }
 
-    public static void waitAfterCarFuel(ImageView image, ArrayList<A> crs){
+    public static void waitAfterCarFuel(ImageView image, ArrayList<VoitureEssance> crs){
        // ImageView image2 = crs.get(crs.size()-2).imageView;
         int n = crs.size()+1;
         double x = n * 60;
@@ -102,7 +100,7 @@ public class MyTransitions{
         t.setToY(getPayPoint().getY()-image.getLayoutY());
         t.play();
     }
-    public static void increse(ImageView image, ArrayList<A> crs,int index){
+    public static void increse(ImageView image, ArrayList<VoitureEssance> crs, int index){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
 
         double x = index * 60;

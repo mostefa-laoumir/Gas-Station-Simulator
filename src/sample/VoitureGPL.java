@@ -4,15 +4,13 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
-import java.util.ArrayList;
-
-public class B extends Thread {
+public class VoitureGPL extends Thread {
     String name ="";
     ImageView imageView;
     Label label;
 
 
-    public B(String name, ImageView imageView, Label label) {
+    public VoitureGPL(String name, ImageView imageView, Label label) {
         this.name=name;
         this.imageView = imageView;
         this.label = label;
@@ -45,7 +43,7 @@ public class B extends Thread {
                 MyTransitionsGaz.goThroughOneWay2(imageView);
                 Thread.sleep(3000);
                 if(Main.pay.availablePermits()==0) {
-                    MyTransitions.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
+                    MyTransitionsEssance.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
                     Controller.waitingCarsToPay.add(imageView);
                 }
                 Main.pay.acquire();
@@ -63,7 +61,7 @@ public class B extends Thread {
                 if(!Controller.waitingCarsToPay.isEmpty()) {
                     Controller.waitingCarsToPay.remove(0);
                     for (int i = 0; i < Controller.waitingCarsToPay.size(); i++)
-                        MyTransitions.increseToPay(Controller.waitingCarsToPay.get(i),i+1);
+                        MyTransitionsEssance.increseToPay(Controller.waitingCarsToPay.get(i),i+1);
                 }
 
             } catch (Exception e) {
