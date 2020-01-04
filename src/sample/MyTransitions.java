@@ -86,13 +86,24 @@ public MyTransitions(ImageView imageView){
 
     public static void waitAfterCarFuel(ImageView image, ArrayList<A> crs){
        // ImageView image2 = crs.get(crs.size()-2).imageView;
-        int n = crs.size()-1;
+        int n = crs.size()+1;
         double x = n * 60;
         TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
        // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
         //t.setToY(image2.getLayoutY()-image.getLayoutY());
         t.setToX(getFuelPoint().getX()-image.getLayoutX()+x);
         t.setToY(getFuelPoint().getY()-image.getLayoutY());
+        t.play();
+    }
+    public static void waitAfterCarPay(ImageView image, ArrayList<AB> crs){
+        // ImageView image2 = crs.get(crs.size()-2).imageView;
+        int n = crs.size()+1;
+        double x = -n * 60;
+        TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
+        // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
+        //t.setToY(image2.getLayoutY()-image.getLayoutY());
+        t.setToX(getPayPoint().getX()-image.getLayoutX()+x);//1350, 646
+        t.setToY(getPayPoint().getY()-image.getLayoutY());
         t.play();
     }
     public static void increse(ImageView image, ArrayList<A> crs,int index){
@@ -104,6 +115,17 @@ public MyTransitions(ImageView imageView){
         //t.setToY(image2.getLayoutY()-image.getLayoutY());
         t.setToX(getFuelPoint().getX()-image.getLayoutX()+x);
         t.setToY(getFuelPoint().getY()-image.getLayoutY());
+        t.play();
+    }
+    public static void increseToPay(ImageView image,int index){
+        // ImageView image2 = crs.get(crs.size()-2).imageView;
+
+        double x = -index * 60;
+        TranslateTransition t = new TranslateTransition(Duration.seconds(4),image);
+        // t.setToX(image2.getLayoutX()-image.getLayoutX()+60);
+        //t.setToY(image2.getLayoutY()-image.getLayoutY());
+        t.setToX(getPayPoint().getX()-image.getLayoutX()+x);
+        t.setToY(getPayPoint().getY()-image.getLayoutY());
         t.play();
     }
     public void run(){

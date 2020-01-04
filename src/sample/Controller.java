@@ -33,6 +33,7 @@ public class Controller implements Initializable {
     @FXML
     public static ArrayList<ImageView> carsImg = new ArrayList<>();
     public static ArrayList<A> waitingCars = new ArrayList<>();
+    public static ArrayList<AB> waitingCarsToPay = new ArrayList<>();
     public static ArrayList<A> cars = new ArrayList<>();
     @FXML
     Button addBtn;

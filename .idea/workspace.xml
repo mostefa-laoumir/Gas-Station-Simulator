@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/AB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/animation/sample/A.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/animation/sample/A.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/animation/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/animation/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/animation/sample/MyTransitions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/animation/sample/MyTransitions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/A.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MyTransitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MyTransitions.java" afterDir="false" />
@@ -213,7 +216,7 @@
       <workItem from="1577916141908" duration="7362000" />
       <workItem from="1577966914214" duration="30243000" />
       <workItem from="1578082104220" duration="16940000" />
-      <workItem from="1578102417683" duration="6252000" />
+      <workItem from="1578102417683" duration="12386000" />
     </task>
     <servers />
   </component>

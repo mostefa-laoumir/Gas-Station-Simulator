@@ -19,7 +19,7 @@ ImageView imageView;
     @Override
     public void run() {
         if(Main.s.availablePermits()==0) {
-            MyTransitions.waitAfterCarFuel(imageView, Controller.cars);
+            MyTransitions.waitAfterCarFuel(imageView, Controller.waitingCars);
             Controller.waitingCars.add(this);
         }
         try {
@@ -38,12 +38,21 @@ ImageView imageView;
             Thread.sleep(3000);
             MyTransitions.goThroughOneWay2(imageView);
             Thread.sleep(3000);
-
+            if(Main.pay.availablePermits()==0) {
+                MyTransitions.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
+                Controller.waitingCarsToPay.add(new AB(this,null));
+            }
+            Main.pay.acquire();
             MyTransitions.goToPay(imageView);
             Thread.sleep(15000);
-            System.out.println("ee");
             MyTransitions.goToEnd(imageView);
-            System.out.println("ff");
+            Main.pay.release();
+            if(!Controller.waitingCarsToPay.isEmpty()) {
+                Controller.waitingCarsToPay.remove(0);
+                for (int i = 0; i < Controller.waitingCarsToPay.size(); i++)
+                    MyTransitions.increseToPay(Controller.waitingCarsToPay.get(i).a.imageView,i+1);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
