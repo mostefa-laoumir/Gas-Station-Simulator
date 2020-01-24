@@ -17,6 +17,7 @@ public class Main extends Application {
     public static final Semaphore g = new Semaphore(1);
     public static final Semaphore pay = new Semaphore(1);
     public static final Semaphore waitingPoint = new Semaphore(1);
+    public static final Semaphore animation = new Semaphore(1);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -26,8 +27,6 @@ public class Main extends Application {
         primaryStage.setScene(scn);
         primaryStage.show();
         primaryStage.setResizable(false);
-
-
 
     }
 

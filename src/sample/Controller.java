@@ -11,7 +11,9 @@ import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 public class Controller implements Initializable {
     @FXML
@@ -32,7 +34,10 @@ public class Controller implements Initializable {
 Pane pane;
 
     private ImageView createImageViewOfCar(String nameOfImage) throws Exception {
-        Image image = new Image(getClass().getResource("/res/" + nameOfImage).toURI().toString());
+        Random r = new Random();
+        int x = 1+r.nextInt(5);
+
+        Image image = new Image(getClass().getResource("/res/" + nameOfImage+x+".png").toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(40);
         imageView.setFitHeight(64);
@@ -43,7 +48,10 @@ Pane pane;
         return imageView;
     }
     private ImageView createImageViewOfCarGaz(String nameOfImage) throws Exception {
-        Image image = new Image(getClass().getResource("/res/" + nameOfImage).toURI().toString());
+        Random r = new Random();
+        int x = 1+r.nextInt(4);
+        System.out.println(x);
+        Image image = new Image(getClass().getResource("/res/" + nameOfImage+x+".png").toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(40);
         imageView.setFitHeight(64);
@@ -59,7 +67,7 @@ Pane pane;
 
             addA.setOnAction(event->{
                 try {
-                   ImageView image = createImageViewOfCar("car4.png");
+                   ImageView image = createImageViewOfCar("car");
                     carsImg.add(image);
                     pane.getChildren().add(carsImg.get(carsImg.size()-1));
                     cars.add(new VoitureEssance("a",image,total));
@@ -71,7 +79,7 @@ Pane pane;
             });
         addB.setOnAction(event->{
             try {
-                ImageView image = createImageViewOfCarGaz("car2.png");
+                ImageView image = createImageViewOfCarGaz("car");
                 carsImg.add(image);
                 pane.getChildren().add(carsImg.get(carsImg.size()-1));
                 carsGaz.add(new VoitureGPL("a",image,total));
