@@ -10,8 +10,7 @@ public class VoitureGPL extends Thread {
     String name ="";
     ImageView imageView;
     Label label;
-    public final Semaphore animation = new Semaphore(1);
-    public final Semaphore animation1 = new Semaphore(2);
+//    public final Semaphore animation = new Semaphore(1);
 
 
 
@@ -24,7 +23,7 @@ public class VoitureGPL extends Thread {
         @Override
         public void run() {
             if(Main.g.availablePermits()==0) {
-                MyTransitionsGaz.waitAfterCarGaz(imageView, Controller.waitingCarsGaz,animation);
+                MyTransitionsGaz.waitAfterCarGaz(imageView, Controller.waitingCarsGaz);
                 Controller.waitingCarsGaz.add(this);
             }
             try {
@@ -32,7 +31,7 @@ public class VoitureGPL extends Thread {
                 MyTransitionsGaz.goToFuel(imageView);
                 Thread.sleep(10000);
                 Main.waitingPoint.acquire();
-                MyTransitionsGaz.goToWaitPoint(imageView,animation);
+                MyTransitionsGaz.goToWaitPoint(imageView);
                 Thread.sleep(1000);
                 //MyTransitions.goToWaitPoint(imageView);
                 Main.g.release();
@@ -42,17 +41,17 @@ public class VoitureGPL extends Thread {
                         MyTransitionsGaz.increse(Controller.waitingCarsGaz.get(i).imageView,Controller.waitingCars,i+1);
                 }
                 Thread.sleep(3000);
-                MyTransitionsGaz.goThroughOneWay1(imageView,animation);
+                MyTransitionsGaz.goThroughOneWay1(imageView);
                 Thread.sleep(3000);
                 Main.waitingPoint.release();
-                MyTransitionsGaz.goThroughOneWay2(imageView,animation);
+                MyTransitionsGaz.goThroughOneWay2(imageView);
                 Thread.sleep(3000);
                 if(Main.pay.availablePermits()==0) {
-                    MyTransitionsEssance.waitAfterCarPay(imageView, Controller.waitingCarsToPay,Main.animation);
+                    MyTransitionsEssance.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
                     Controller.waitingCarsToPay.add(imageView);
                 }
                 Main.pay.acquire();
-                MyTransitionsGaz.goToPay(imageView,animation);
+                MyTransitionsGaz.goToPay(imageView);
                 Thread.sleep(15000);
                 Controller.totalIncome += 9.99;
                 Platform.runLater(new Runnable(){
@@ -66,7 +65,7 @@ public class VoitureGPL extends Thread {
                 if(!Controller.waitingCarsToPay.isEmpty()) {
                     Controller.waitingCarsToPay.remove(0);
                     for (int i = 0; i < Controller.waitingCarsToPay.size(); i++)
-                        MyTransitionsEssance.increseToPay(Controller.waitingCarsToPay.get(i),i+1,animation);
+                        MyTransitionsEssance.increseToPay(Controller.waitingCarsToPay.get(i),i+1);
                 }
 
             } catch (Exception e) {

@@ -22,12 +22,8 @@ public class MyTransitionsEssance {
         //   tt.setCycleCount(Animation.INDEFINITE);
         tt.play();
     }
-    public static void goToWaitPoint(ImageView image, Semaphore s){
-        try {
-            s.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void goToWaitPoint(ImageView image){
+
         TranslateTransition t1 = new TranslateTransition();
         t1.setNode(image);
         t1.setDuration(Duration.seconds(3));
@@ -38,15 +34,10 @@ public class MyTransitionsEssance {
         t1.play();
         t1.setOnFinished(event -> {
             image.setRotate(image.getRotate() - 90);
-            s.release();
         });
     }
-    public static void goThroughOneWay1(ImageView image, Semaphore s){
-        try {
-            s.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void goThroughOneWay1(ImageView image){
+
         TranslateTransition t2 = new TranslateTransition();
         t2.setNode(image);
         t2.setDuration(Duration.seconds(2));
@@ -56,17 +47,12 @@ public class MyTransitionsEssance {
         t2.play();
         t2.setOnFinished(event -> {
             image.setRotate(image.getRotate()-45);
-            s.release();
         });
 
 
     }
-    public static void goThroughOneWay2(ImageView image, Semaphore s){
-        try {
-            s.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void goThroughOneWay2(ImageView image){
+
         TranslateTransition t3 = new TranslateTransition();
         t3.setNode(image);
         t3.setDuration(Duration.seconds(3));
@@ -77,15 +63,10 @@ public class MyTransitionsEssance {
         t3.play();
         t3.setOnFinished(event -> {
             image.setRotate(image.getRotate()-45);
-            s.release();
         });
     }
-    public static void goToPay(ImageView image, Semaphore s){
-        try {
-            s.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void goToPay(ImageView image){
+
         TranslateTransition t4 = new TranslateTransition();
         t4.setNode(image);
         t4.setDuration(Duration.seconds(4));
@@ -94,7 +75,6 @@ public class MyTransitionsEssance {
         t4.setToX(getPayPoint().getX()-image.getLayoutX());
         t4.setToY(getPayPoint().getY()-image.getLayoutY());
         t4.play();
-        t4.setOnFinished(event -> s.release());
     }
     public static void goToEnd(ImageView image){
 
@@ -109,12 +89,8 @@ public class MyTransitionsEssance {
 
     }
 
-    public static void waitAfterCarFuel(ImageView image, ArrayList<VoitureEssance> crs, Semaphore s){
-        try {
-            s.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void waitAfterCarFuel(ImageView image, ArrayList<VoitureEssance> crs){
+
        // ImageView image2 = crs.get(crs.size()-2).imageView;
         int n = crs.size()+1;
         double x = n * 60;
@@ -124,15 +100,10 @@ public class MyTransitionsEssance {
         t.setToX(getFuelPoint().getX()-image.getLayoutX()+x);
         t.setToY(getFuelPoint().getY()-image.getLayoutY());
         t.play();
-        t.setOnFinished(event -> s.release());
 
     }
-    public  static void waitAfterCarPay(ImageView image, ArrayList<ImageView> crs, Semaphore s){
-        try {
-            s.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public  static void waitAfterCarPay(ImageView image, ArrayList<ImageView> crs){
+
         // ImageView image2 = crs.get(crs.size()-2).imageView;
         int n = crs.size()+1;
         double x = -n * 60;
@@ -142,7 +113,6 @@ public class MyTransitionsEssance {
         t.setToX(getPayPoint().getX()-image.getLayoutX()+x);//1350, 646
         t.setToY(getPayPoint().getY()-image.getLayoutY());
         t.play();
-        t.setOnFinished(event -> s.release());
     }
     public static void increse(ImageView image, ArrayList<VoitureEssance> crs, int index){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
@@ -156,7 +126,7 @@ public class MyTransitionsEssance {
         t.play();
     }
 
-    public synchronized static void increseToPay(ImageView image,int index, Semaphore s){
+    public synchronized static void increseToPay(ImageView image,int index){
         // ImageView image2 = crs.get(crs.size()-2).imageView;
 
         double x = -index * 60;
@@ -166,7 +136,6 @@ public class MyTransitionsEssance {
         t.setToX(getPayPoint().getX()-image.getLayoutX()+x);
         t.setToY(getPayPoint().getY()-image.getLayoutY());
         t.play();
-        t.setOnFinished(event -> s.release());
     }
 
 

@@ -10,7 +10,7 @@ public class VoitureEssance extends Thread {
 String name ="";
 ImageView imageView;
 Label label;
-public final Semaphore animation = new Semaphore(1);
+//public final Semaphore animation = new Semaphore(1);
     public final Semaphore animation1 = new Semaphore(1);
 
 
@@ -24,15 +24,15 @@ public final Semaphore animation = new Semaphore(1);
     @Override
     public void run() {
         if(Main.s.availablePermits()==0) {
-            MyTransitionsEssance.waitAfterCarFuel(imageView, Controller.waitingCars,animation);
+            MyTransitionsEssance.waitAfterCarFuel(imageView, Controller.waitingCars);
             Controller.waitingCars.add(this);
         }
         try {
-            Main.s.acquire();
+            Main.s.a cquire();
             MyTransitionsEssance.goToFuel(imageView);
             Thread.sleep(10000);
-            MyTransitionsEssance.goToWaitPoint(imageView,animation);
             Main.waitingPoint.acquire();
+            MyTransitionsEssance.goToWaitPoint(imageView);
             Thread.sleep(1000);
             Main.s.release();
             if(!Controller.waitingCars.isEmpty()) {
@@ -42,17 +42,17 @@ public final Semaphore animation = new Semaphore(1);
             }
             Thread.sleep(3000);
 
-            MyTransitionsEssance.goThroughOneWay1(imageView,animation);
+            MyTransitionsEssance.goThroughOneWay1(imageView);
             Thread.sleep(3000);
             Main.waitingPoint.release();
-            MyTransitionsEssance.goThroughOneWay2(imageView,animation);
+            MyTransitionsEssance.goThroughOneWay2(imageView);
             Thread.sleep(3000);
             if(Main.pay.availablePermits()==0) {
-                MyTransitionsEssance.waitAfterCarPay(imageView, Controller.waitingCarsToPay,animation);
+                MyTransitionsEssance.waitAfterCarPay(imageView, Controller.waitingCarsToPay);
                 Controller.waitingCarsToPay.add(imageView);
             }
             Main.pay.acquire();
-            MyTransitionsEssance.goToPay(imageView,animation);
+            MyTransitionsEssance.goToPay(imageView);
             Thread.sleep(15000);
             Controller.totalIncome += 29.99;
             Platform.runLater(new Runnable(){
@@ -67,7 +67,7 @@ public final Semaphore animation = new Semaphore(1);
             if(!Controller.waitingCarsToPay.isEmpty()) {
                 Controller.waitingCarsToPay.remove(0);
                 for (int i = 0; i < Controller.waitingCarsToPay.size(); i++)
-                    MyTransitionsEssance.increseToPay(Controller.waitingCarsToPay.get(i),i+1,animation);
+                    MyTransitionsEssance.increseToPay(Controller.waitingCarsToPay.get(i),i+1);
             }
 
         } catch (Exception e) {

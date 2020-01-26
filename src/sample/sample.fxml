@@ -15,12 +15,17 @@
          </image>
       </ImageView>
        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#5b5b5b" height="250.0" layoutX="936.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="360.0" />
-       <Button fx:id="addA" layoutX="946.0" layoutY="52.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="153.0" text="Ajouter Voiture Essance" />
-       <Button fx:id="addB" layoutX="946.0" layoutY="98.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="153.0" text="Ajouter Voiture GPL" />
-      <Label fx:id="total" layoutX="1111.0" layoutY="226.0" prefHeight="36.0" prefWidth="170.0" text="Total :  0$" textFill="#19da23">
+       <Button fx:id="addA" layoutX="1046.0" layoutY="72.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="153.0" text="Ajouter Voiture Essance" />
+       <Button fx:id="addB" layoutX="1046.0" layoutY="138.0" mnemonicParsing="false" onAction="#add" prefHeight="36.0" prefWidth="153.0" text="Ajouter Voiture GPL" />
+      <Label fx:id="total" alignment="CENTER" contentDisplay="CENTER" layoutX="971.0" layoutY="226.0" prefHeight="36.0" prefWidth="316.0" text="Total :  0$" textFill="#19da23">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
+      <ImageView fx:id="cover" fitHeight="700.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/cover.png" />
+         </image></ImageView>
+       <Ellipse fx:id="startBtn" fill="#1f93ff00" layoutX="279.0" layoutY="558.0" radiusX="100.0" radiusY="48.0" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </Pane>

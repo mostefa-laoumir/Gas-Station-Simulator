@@ -7,8 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Ellipse;
 
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,7 +19,7 @@ import java.util.stream.IntStream;
 
 public class Controller implements Initializable {
     @FXML
-    ImageView bg, car;
+    ImageView bg, car,cover;
     @FXML
     Label total;
     public static double totalIncome = 0;
@@ -32,12 +34,15 @@ public class Controller implements Initializable {
     Button addA,addB;
 @FXML
 Pane pane;
+@FXML
+    Ellipse startBtn;
+
 
     private ImageView createImageViewOfCar(String nameOfImage) throws Exception {
         Random r = new Random();
         int x = 1+r.nextInt(5);
 
-        Image image = new Image(getClass().getResource("/res/" + nameOfImage+x+".png").toURI().toString());
+        Image image = new Image(getClass().getResource("/res/" + nameOfImage+".png").toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(40);
         imageView.setFitHeight(64);
@@ -47,11 +52,25 @@ Pane pane;
 
         return imageView;
     }
+    private ImageView createImageViewOfCover(String nameOfImage) throws Exception {
+        Random r = new Random();
+        int x = 1+r.nextInt(5);
+
+        Image image = new Image(getClass().getResource("/res/" + nameOfImage+".png").toURI().toString());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(1300);
+        imageView.setFitHeight(700);
+        imageView.setPreserveRatio(true);
+        imageView.setLayoutX(0);
+        imageView.setLayoutY(0);
+
+        return imageView;
+    }
     private ImageView createImageViewOfCarGaz(String nameOfImage) throws Exception {
         Random r = new Random();
         int x = 1+r.nextInt(4);
         System.out.println(x);
-        Image image = new Image(getClass().getResource("/res/" + nameOfImage+x+".png").toURI().toString());
+        Image image = new Image(getClass().getResource("/res/" + nameOfImage+".png").toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(40);
         imageView.setFitHeight(64);
@@ -64,10 +83,13 @@ Pane pane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-            addA.setOnAction(event->{
+        startBtn.setOnMouseClicked(mouseEvent -> {
+            cover.setVisible(false);
+            startBtn.setVisible(false);
+        });
+        addA.setOnAction(event->{
                 try {
-                   ImageView image = createImageViewOfCar("car");
+                   ImageView image = createImageViewOfCar("car1");
                     carsImg.add(image);
                     pane.getChildren().add(carsImg.get(carsImg.size()-1));
                     cars.add(new VoitureEssance("a",image,total));
@@ -79,7 +101,7 @@ Pane pane;
             });
         addB.setOnAction(event->{
             try {
-                ImageView image = createImageViewOfCarGaz("car");
+                ImageView image = createImageViewOfCarGaz("car2");
                 carsImg.add(image);
                 pane.getChildren().add(carsImg.get(carsImg.size()-1));
                 carsGaz.add(new VoitureGPL("a",image,total));
